@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Date;
 
+import org.pmorais.java.java_jdbc.modelo.Categoria;
 import org.pmorais.java.java_jdbc.modelo.Produto;
 import org.pmorais.java.java_jdbc.repositorio.ProdutoRepositorioImpl;
 import org.pmorais.java.java_jdbc.repositorio.Repositorio;
@@ -22,17 +23,22 @@ public class App
         	
         	System.out.println("====== Inserir novo produto ======");
         	Produto produto = new Produto();
-        	produto.setNome("TV LG 4K 50 polegadas");
-        	produto.setPreco(2000);
+        	produto.setNome("notebook gamer acer nitro 5");
+        	produto.setPreco(5000);
         	produto.setDataRegistro(new Date());
-        	repositorio.insert(produto);
+        	Categoria categoria = new Categoria();
+        	categoria.setId(2);
+        	produto.setCategoria(categoria);
+       	    repositorio.insert(produto);
         	System.out.println("Produto inserido com sucesso");
         	repositorio.findAll().forEach(System.out::println);
         	
         	System.out.println("====== Atualizar produto ======");
         	produto.setId(3);
-        	produto.setNome("Teclado Razer mecânico");
-        	produto.setPreco(700);
+        	produto.setNome("Teclado Corsair K95 mecânico");
+        	produto.setPreco(800);
+        	categoria.setId(4);
+        	produto.setCategoria(categoria);
         	repositorio.insert(produto);
         	System.out.println("Produto atualizado com sucesso");
         	repositorio.findAll().forEach(System.out::println);
@@ -40,7 +46,6 @@ public class App
         	System.out.println("====== Deletar produto ======");
         	repositorio.delete(4);
         	System.out.println("Excluído com sucesso");
-        	
         	repositorio.findAll().forEach(System.out::println);
         }
         catch(SQLException e) {

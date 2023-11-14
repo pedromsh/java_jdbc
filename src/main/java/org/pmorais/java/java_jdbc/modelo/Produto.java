@@ -8,16 +8,18 @@ public class Produto {
 	private String nome;
 	private Integer preco;
 	private Date dataRegistro;
+	private Categoria categoria;
 	
 	public Produto() {
 		
 	}
 	
-	public Produto(Integer id, String nome, Integer preco, Date dataRrgistro) {
+	public Produto(Integer id, String nome, Integer preco, Date dataRrgistro, Categoria categoria) {
 		this.id = id;
 		this.nome = nome;
 		this.preco = preco;
 		this.dataRegistro = dataRrgistro;
+		this.categoria = categoria;
 	}
 
 	public Integer getId() {
@@ -51,10 +53,17 @@ public class Produto {
 		this.dataRegistro = dataRegistro;
 	}
 	
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
 	@Override
 	public String toString() {
-		return "Produto [id=" + id + ", nome=" + nome + ", preco=" + preco + ", dataRegistro=" + dataRegistro + "]";
+		return "Produto [id=" + id + ", nome=" + nome + ", preco=" + preco + ", dataRegistro=" + dataRegistro
+				+ ", categoria=" + categoria.getNome() + "]";
 	}
-	
-	
 }
